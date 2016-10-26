@@ -10,37 +10,90 @@
   <script src="scripts/people.controller.js" charset="utf-8"></script>
 
   <link rel="stylesheet" href="vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body ng-controller="PeopleController as ctrl">
-  <!-- <button ng-click="ctrl.listPeople()">Get People</button> -->
-  <select ng-model="ctrl.select" ng-change="ctrl.listPeople()">
-    <option value="-name">Name</option>
-    <option value="-hometown">Hometown</option>
-    <option value="-movie">Favorite Movie</option>
-  </select>
+  <div class="container">
+    <div class="row">
+
+    <div class="col-xs-2">
+    </div>
+    <h1 class="col-xs-8">MEAN Stack List</h1>
+    <div class="col-xs-2">
+
+    </div>
+  </div>
+    <div class="row">
+
+    <div class="col-xs-2">
+    </div>
+    <main class="col-xs-8">
+  <form class="form-group">
+    <legend>Add A Person</legend>
+      <div class="form-group row">
+          <label for="name" class="col-xs-3 col-form-label">Name:</label>
+          <div class="col-xs-9">
+            <input type="text" ng-model="ctrl.person.name" class="form-control" id="name">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="hometown" class="col-xs-3 col-form-label">Hometown:</label>
+          <div class="col-xs-9">
+            <input type="text" ng-model="ctrl.person.hometown" class="form-control" id="hometown">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="movie" class="col-xs-3 col-form-label">Favorite Movie:</label>
+          <div class="col-xs-9">
+            <input type="text" ng-model="ctrl.person.movie" class="form-control" id="movie">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-xs-3">
+
+        </div>
+        <div class="col-xs-9">
 
 
-<table class="person">
+      <button ng-click="ctrl.addPerson()" class="btn btn-primary">Add Person</button>
+        </div>
+      </div>
+    </form>
+    <form class="form-group">
+      <div class="form-group row">
+          <label for="select" class="col-xs-3 col-form-label">Select Order:</label>
+          <div class="col-xs-9">
+          <select class="form-control" id="select" ng-model="ctrl.select" ng-change="ctrl.listPeople()" class="form-control">
+            <option value="-name">Name</option>
+            <option value="-hometown">Hometown</option>
+            <option value="-movie">Favorite Movie</option>
+          </select>
+          </div>
+    </div>
+  </form>
+<div class="row">
+  <div class="col-xs-12">
+<table class="table table-striped">
+  <legend>List of People</legend>
   <tr>
     <th>Name</th>
     <th>Hometown</th>
     <th>Favorite Movie</th>
   </tr>
   <tr ng-repeat="person in ctrl.people | orderBy:ctrl.select:reverse=true">
-    <td>{{person.name}}</td>
-    <td>{{person.hometown}}</td>
-    <td>{{person.movie}}</td>
+    <td scope="row">{{person.name}}</td>
+    <td scope="row">{{person.hometown}}</td>
+    <td scope="row">{{person.movie}}</td>
   </tr>
 </table>
+</div>
+<div class="col-xs-3">
 
-  <div>
-    <label>Name:</label>
-    <input type="text" ng-model="ctrl.person.name">
-    <label>Hometown:</label>
-    <input type="text" ng-model="ctrl.person.hometown">
-    <label>Favorite Movie:</label>
-    <input type="text" ng-model="ctrl.person.movie">
-    <button ng-click="ctrl.addPerson()">Add Person</button>
+</div>
+</div>
+  </main>
   </div>
+</div>
 </body>
 </html>
